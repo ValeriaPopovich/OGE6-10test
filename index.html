@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ОГЭ — задания 6–10</title>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{--bg:#fff8f6;--card:#fff;--text:#302730;--muted:#7e717b;--pink:#ef7f9e;--orange:#ffb36b;--line:#eadde1;--red:#d95f6f;--green:#3c9c6c}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:28px 16px;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 8% 12%,rgba(255,179,107,.22) 0 70px,transparent 71px),radial-gradient(circle at 91% 18%,rgba(239,127,158,.17) 0 105px,transparent 106px),var(--bg)}
+.app{width:min(900px,100%);margin:auto}.card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,5vw,48px);box-shadow:0 18px 50px rgba(92,55,70,.12)}
+.hidden{display:none!important}.eyebrow{font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--pink)}h1{font-size:clamp(30px,6vw,54px);line-height:1.04;margin:12px 0 14px}.subtitle{font-size:18px;line-height:1.55;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0}.stat{padding:16px;border-radius:18px;font-weight:850;background:#fff3f5;border:1px solid #ffd6df;text-align:left}
+.test-list{margin:24px 0;padding:0;list-style:none;display:grid;gap:12px}
+.test-list li{position:relative;padding-left:32px;font-size:17px;line-height:1.45}
+.test-list li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:1000;font-size:20px}.stat b{display:block;font-size:26px;margin-top:6px}
+button{border:0;border-radius:16px;padding:14px 22px;font:inherit;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--pink),var(--orange));box-shadow:0 10px 22px rgba(239,127,158,.25)}button.secondary{background:#fff;color:var(--text);border:1px solid var(--line);box-shadow:none}
+.topbar{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}.counter,.timer{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-weight:900}.progress{height:10px;background:#f1e6e9;border-radius:999px;overflow:hidden;margin-bottom:18px}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--orange));transition:.25s}
+.qnum{font-size:14px;font-weight:900;color:var(--pink);text-transform:uppercase;letter-spacing:.08em}.topic{font-size:13px;color:var(--muted);font-weight:800}.prompt{font-size:clamp(20px,3.5vw,30px);line-height:1.5;margin-top:20px}.prompt p{margin:0 0 14px}.math{text-align:center;font-size:clamp(24px,4vw,38px);margin:22px 0}.options{display:grid;gap:10px;margin:18px 0;font-size:19px}.option{padding:13px 16px;border:1px solid var(--line);border-radius:14px;background:#fffafd}
+.answer{margin-top:28px}.answer label{display:block;font-size:14px;font-weight:900;margin-bottom:9px}.answer input{width:100%;font-size:24px;font-weight:800;padding:16px 18px;border:2px solid var(--line);border-radius:16px;outline:none}.answer input:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(239,127,158,.12)}.hint{font-size:13px;color:var(--muted);margin-top:10px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.wrong{padding:18px;border-radius:18px;background:#fff1f3;border:1px solid #ffd6dc;line-height:1.6}.history{margin-top:24px}.history h2{font-size:22px;margin:0 0 12px}.history-list{display:grid;gap:10px}.history-item{display:grid;grid-template-columns:1.25fr .8fr .8fr;gap:10px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:#fff}.history-item b{font-size:18px}.muted{color:var(--muted)}.score{font-size:clamp(48px,9vw,80px);font-weight:1000;margin:8px 0}.notice{margin:22px 0;padding:18px 20px;border-radius:18px;background:#fff8e9;border:1px solid #ffd99f;line-height:1.55}
+.notice b{display:block;margin-bottom:5px}
+.start-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.telegram-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:16px;padding:14px 20px;font-weight:900;background:#fff;color:var(--text);border:1px solid var(--line)}
+.telegram-btn svg{width:21px;height:21px;flex:0 0 auto}
+.svg-wrap{overflow:auto;margin:18px 0}svg{max-width:100%;height:auto}
+@media(max-width:640px){
+.stats,.history-item{grid-template-columns:1fr}
+.card{border-radius:22px;padding:24px 18px}
+.topbar>*{flex:1;text-align:center}
+.start-actions,.actions{display:grid;grid-template-columns:1fr;width:100%}
+.start-actions button,.start-actions a,.actions button{width:100%}
+.prompt{font-size:20px}
+.options{font-size:17px}
+.answer input{font-size:20px}
+}
+@media(max-width:390px){
+body{padding:14px 10px}
+.card{padding:21px 15px}
+h1{font-size:32px}
+.subtitle{font-size:16px}
+.counter,.timer{padding:8px 9px;font-size:13px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<div id="top" class="hidden">
+  <div class="topbar"><div id="counter" class="counter"></div><div id="timer" class="timer">00:00</div></div>
+  <div class="progress"><div id="fill" class="fill"></div></div>
+</div>
+
+<section id="start" class="card">
+<div class="eyebrow">Математика с Лерой</div>
+<h1>Тренажёр ОГЭ<br>по заданиям 6–10</h1>
+<div class="subtitle">Все ответы вводятся вручную. Правильность не показывается по ходу теста — результат, процент и номера ошибок появятся только в самом конце. История попыток сохраняется на этом устройстве.</div>
+<div class="notice">
+  <b>Важно перед началом</b>
+  Во время прохождения пользуйтесь только справочными материалами, разрешёнными на экзамене. Не ищите готовые решения и ответы — честный результат прежде всего в ваших интересах: так вы увидите, какие темы действительно нужно повторить.
+</div>
+<h2 style="font-size:22px;margin:26px 0 0">Что вас ждёт</h2>
+<ul class="test-list">
+  <li><b>45 заданий</b></li>
+  <li><b>Секундомер</b></li>
+  <li><b>Результат и номера ошибок только после завершения теста</b></li>
+</ul>
+<div class="start-actions">
+  <button id="startBtn">Начать тест</button>
+  <a class="telegram-btn" href="https://t.me/lera_easy_math" target="_blank" rel="noopener noreferrer" aria-label="Подписаться на Telegram-канал">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.7 3.4 18.5 19c-.2 1.1-.9 1.4-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6 12.8 1.2 11.3c-1-.3-1.1-1 .2-1.5L20.1 2.6c.9-.3 1.8.2 1.6.8Z"/></svg>
+    Подписаться на канал
+  </a>
+</div>
+</section>
+
+<section id="quiz" class="card hidden">
+<div class="qnum" id="qnum"></div><div class="topic" id="topic"></div>
+<div class="prompt" id="prompt"></div>
+<div class="answer">
+<label for="answer">Введите ответ</label>
+<input id="answer" inputmode="decimal" autocomplete="off" placeholder="Ответ">
+<div class="hint">Точка и запятая в десятичной дроби считаются одинаково.</div>
+<div class="actions"><button id="saveBtn">Сохранить ответ</button></div>
+</div>
+</section>
+
+<section id="result" class="card hidden">
+<div class="eyebrow">Тест завершён</div><h1>Результат</h1>
+<div id="score" class="score"></div>
+<div class="stats"><div class="stat">Верно<b id="correct"></b></div><div class="stat">Процент<b id="percent"></b></div><div class="stat">Время<b id="duration"></b></div></div>
+<div id="wrong" class="wrong"></div>
+<div class="history"><h2>История попыток</h2><div id="history" class="history-list"></div></div>
+<div class="actions"><button id="restartBtn">Пройти ещё раз</button></div>
+</section>
+</div>
+
+<script>
+const Q=[
+["Дроби",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac75\\cdot\\frac{12}{35}\\)</div>`,"0.48"],
+["Дроби",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac{14}{5}:\\frac72\\)</div>`,"0.8"],
+["Дроби",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac1{10}-\\frac{23}{20}\\)</div>`,"-1.05"],
+["Дроби",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac4{25}+\\frac{15}{4}\\)</div>`,"3.91"],
+["Десятичные дроби",`<p>Найдите значение выражения.</p><div class="math">\\(8{,}7+4{,}6\\)</div>`,"13.3"],
+["Десятичные дроби",`<p>Найдите значение выражения.</p><div class="math">\\(4{,}9-9{,}4\\)</div>`,"-4.5"],
+["Десятичные дроби",`<p>Найдите значение выражения.</p><div class="math">\\(2{,}1\\cdot9{,}6\\)</div>`,"20.16"],
+["Десятичные дроби",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac{13{,}2}{1{,}2}\\)</div>`,"11"],
+["Дроби",`<p>Представьте выражение \\(\\frac58+\\frac13\\) в виде дроби со знаменателем 48.</p><p>В ответ запишите числитель полученной дроби.</p>`,"46"],
+["Дроби",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac{1}{\\frac1{72}-\\frac1{99}}\\)</div>`,"264"],
+["Числа и промежутки",`<p>Между какими целыми числами заключено число \\(\\frac{110}{13}\\)?</p><div class="options"><div class="option">1) 8 и 9</div><div class="option">2) 9 и 10</div><div class="option">3) 10 и 11</div><div class="option">4) 11 и 12</div></div><p>Введите номер правильного варианта.</p>`,"1"],
+["Числа и промежутки",`<p>Какому промежутку принадлежит число \\(\\frac5{13}\\)?</p><div class="options"><div class="option">1) [0,2; 0,3]</div><div class="option">2) [0,3; 0,4]</div><div class="option">3) [0,4; 0,5]</div><div class="option">4) [0,5; 0,6]</div></div><p>Введите номер правильного варианта.</p>`,"2"],
+["Координатная прямая",`<p>Точкам A, B, C и D соответствуют числа \\(0{,}271; -0{,}112; 0{,}041; -0{,}267\\). Какой точке соответствует число \\(0{,}271\\)?</p><div class="svg-wrap"><svg viewBox="0 0 720 150"><line x1="70" y1="80" x2="650" y2="80" stroke="#9b1c1c" stroke-width="5"/><polygon points="650,80 628,69 628,91" fill="#9b1c1c"/><g fill="#238b45"><circle cx="145" cy="80" r="7"/><circle cx="285" cy="80" r="7"/><circle cx="425" cy="80" r="7"/><circle cx="575" cy="80" r="7"/></g><g fill="#2f43c9" font-size="30" font-style="italic" font-family="serif"><text x="132" y="53">A</text><text x="272" y="53">B</text><text x="412" y="53">C</text><text x="562" y="53">D</text></g></svg></div><div class="options"><div class="option">1) A</div><div class="option">2) B</div><div class="option">3) C</div><div class="option">4) D</div></div><p>Введите номер правильного варианта.</p>`,"4"],
+["Квадратные корни",`<p>Между какими целыми числами заключено число \\(\\sqrt{56}\\)?</p><div class="options"><div class="option">1) 55 и 57</div><div class="option">2) 3 и 4</div><div class="option">3) 19 и 21</div><div class="option">4) 7 и 8</div></div><p>Введите номер правильного варианта.</p>`,"4"],
+["Квадратные корни",`<p>Найдите значение выражения.</p><div class="math">\\(\\sqrt{\\frac{9x^4}{y^6}}\\), при \\(x=9,\\ y=3\\)</div>`,"9"],
+["Квадратные корни",`<p>Найдите значение выражения.</p><div class="math">\\(\\sqrt{(-a)^2\\cdot a^4}\\), при \\(a=3\\)</div>`,"27"],
+["Квадратные корни",`<p>Найдите значение выражения.</p><div class="math">\\(\\sqrt{a^2-10ab+25b^2}\\), при \\(a=7,\\ b=2\\)</div>`,"3"],
+["Квадратные корни",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac{\\sqrt{65}\\cdot\\sqrt{13}}{\\sqrt5}\\)</div>`,"13"],
+["Квадратные корни",`<p>Найдите значение выражения.</p><div class="math">\\(\\sqrt{4^5}\\)</div>`,"32"],
+["Квадратные корни",`<p>Найдите значение выражения.</p><div class="math">\\(\\sqrt{3^6}\\)</div>`,"27"],
+["Квадратные корни",`<p>Найдите значение выражения.</p><div class="math">\\((\\sqrt5-\\sqrt3)(\\sqrt5+\\sqrt3)\\)</div>`,"2"],
+["Квадратные корни",`<p>Найдите значение выражения.</p><div class="math">\\((\\sqrt{17}+2)^2-4\\sqrt{17}\\)</div>`,"21"],
+["Квадратные корни",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac1{\\sqrt{13}-3}-\\frac1{\\sqrt{13}+3}\\)</div>`,"1.5"],
+["Степени",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac{(a^3)^4\\cdot a^{12}}{a^{21}}\\), при \\(a=5\\)</div>`,"125"],
+["Степени",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac{20^7}{4^6\\cdot5^5}\\)</div>`,"100"],
+["Степени",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac{4^5}{16}\\)</div>`,"64"],
+["Степени",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac{(8^3)^{-7}}{8^{-23}}\\)</div>`,"64"],
+["Степени",`<p>Найдите значение выражения.</p><div class="math">\\(\\frac1{3^{-10}}\\cdot\\frac1{3^8}\\)</div>`,"9"],
+["Уравнения",`<p>Решите уравнение.</p><div class="math">\\(-1-3x=2x+1\\)</div>`,"-0.4"],
+["Уравнения",`<p>Решите уравнение.</p><div class="math">\\(5(x-6)=2\\)</div>`,"6.4"],
+["Уравнения",`<p>Решите уравнение.</p><div class="math">\\(x^2-16=0\\)</div><p>Запишите меньший корень.</p>`,"-4"],
+["Уравнения",`<p>Решите уравнение.</p><div class="math">\\(10x^2=80x\\)</div><p>Запишите больший корень.</p>`,"8"],
+["Уравнения",`<p>Решите уравнение.</p><div class="math">\\(x^2-12x+20=0\\)</div><p>Запишите меньший корень.</p>`,"2"],
+["Вероятность",`<p>В лыжных гонках участвуют 13 спортсменов из России, 2 из Норвегии и 5 из Швеции. Найдите вероятность того, что первым будет стартовать спортсмен не из России.</p>`,"0.35"],
+["Вероятность",`<p>На экзамене 40 билетов. Яша не выучил 3 из них. Найдите вероятность того, что ему попадётся выученный билет.</p>`,"0.925"],
+["Вероятность",`<p>В магазине продаётся 120 ручек: 32 красных, 32 зелёных, 46 фиолетовых, остальные синие и чёрные поровну. Найдите вероятность того, что выбранная ручка будет красной или фиолетовой.</p>`,"0.65"],
+["Вероятность",`<p>Игральную кость бросают дважды. Найдите вероятность того, что сумма двух выпавших чисел чётна.</p>`,"0.5"],
+["Вероятность",`<p>В среднем из 200 карманных фонариков четыре неисправны. Найдите вероятность того, что выбранный фонарик окажется исправен.</p>`,"0.98"],
+["Вероятность",`<p>Вероятность того, что новая ручка пишет плохо или не пишет, равна 0,07. Найдите вероятность того, что ручка пишет хорошо.</p>`,"0.93"],
+["Вероятность",`<p>В случайном опыте \\(N=24\\) равновозможных исхода, из которых \\(N(A)=6\\) благоприятствуют событию A. Вычислите вероятность события A.</p>`,"0.25"],
+["Вероятность",`<p>В лотке лежат 14 чёрных и 26 синих маркеров. Берут случайный маркер. Найдите вероятность того, что он окажется синим.</p>`,"0.65"],
+["Вероятность",`<p>В ящике 10 жёлтых и 16 зелёных карандашей. Достали два карандаша без возвращения. Первый оказался зелёным. Найдите вероятность того, что второй тоже зелёный.</p>`,"0.6"],
+["Вероятность",`<p>Монету бросили 25 раз. Орёл выпал 14 раз. Найдите вероятность того, что при тринадцатом броске выпала решка.</p>`,"0.44"],
+["Вероятность",`<p>По дереву случайного опыта найдите вероятность события B.</p><div class="svg-wrap"><svg viewBox="0 0 680 430"><g stroke="#a00079" stroke-width="4" fill="none"><line x1="340" y1="45" x2="220" y2="180"/><line x1="340" y1="45" x2="470" y2="180"/><line x1="220" y1="180" x2="150" y2="350"/><line x1="220" y1="180" x2="285" y2="350"/><line x1="470" y1="180" x2="405" y2="350"/><line x1="470" y1="180" x2="540" y2="350"/></g><g fill="#a00079"><circle cx="340" cy="45" r="7"/><circle cx="220" cy="180" r="7"/><circle cx="470" cy="180" r="7"/><circle cx="150" cy="350" r="7"/><circle cx="285" cy="350" r="7"/><circle cx="405" cy="350" r="7"/><circle cx="540" cy="350" r="7"/></g><g fill="#8d006f" font-family="serif" font-size="28"><text x="330" y="25">S</text><text x="195" y="165">A</text><text x="455" y="165">Ā</text><text x="135" y="392">B</text><text x="270" y="392">B̄</text><text x="390" y="392">B</text><text x="525" y="392">B̄</text></g><g fill="#8d006f" font-size="25"><text x="235" y="88">0,75</text><text x="420" y="88">0,25</text><text x="135" y="245">0,2</text><text x="255" y="245">0,8</text><text x="400" y="245">0,6</text><text x="510" y="245">0,4</text></g></svg></div>`,"0.3"],
+["Вероятность",`<p>На диаграмме Эйлера в каждой области указано число исходов. Найдите вероятность события \\(\\overline A\\cap B\\).</p><div class="svg-wrap"><svg viewBox="0 0 720 320"><rect x="20" y="20" width="680" height="270" rx="28" fill="#fff8fd" stroke="#ef7f9e" stroke-width="2"/><ellipse cx="300" cy="165" rx="155" ry="92" fill="#f6a3c0" fill-opacity=".68" stroke="#ef4f97" stroke-width="3"/><ellipse cx="455" cy="165" rx="155" ry="92" fill="#f69bc1" fill-opacity=".62" stroke="#ef4f97" stroke-width="3"/><g fill="#8b176c" font-family="serif" font-size="30"><text x="245" y="175">18</text><text x="365" y="175">6</text><text x="500" y="175">12</text><text x="350" y="55">24</text><text x="105" y="165">A</text><text x="625" y="165">B</text></g></svg></div>`,"0.2"]
+];
+
+let i=0,answers=[],started=0,timer=null;
+const $=x=>document.getElementById(x);
+const norm=v=>v.trim().replace(/\s+/g,"").replace(",",".").replace("−","-");
+const equal=(u,e)=>{u=norm(u);e=norm(e);const a=Number(u),b=Number(e);return Number.isFinite(a)&&Number.isFinite(b)?Math.abs(a-b)<1e-9:u.toLowerCase()===e.toLowerCase()};
+const fmt=s=>`${String(Math.floor(s/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`;
+
+function showQuestion(){
+ const q=Q[i];$("qnum").textContent=`Задание ${i+1}`;$("topic").textContent=q[0];$("prompt").innerHTML=q[1];
+ $("answer").value="";$("counter").textContent=`${i+1} из ${Q.length}`;$("fill").style.width=`${i/Q.length*100}%`;
+ if(window.MathJax?.typesetPromise)MathJax.typesetPromise([$("prompt")]);setTimeout(()=>$("answer").focus(),40);
+}
+function saveAnswer(){
+ const v=$("answer").value;if(!v.trim()){ $("answer").focus(); $("answer").style.borderColor="var(--red)"; setTimeout(()=>$("answer").style.borderColor="",600); return;}
+ answers[i]=v;
+ if(i<Q.length-1){i++;showQuestion()}else finish();
+}
+function historyData(){try{return JSON.parse(localStorage.getItem("oge_6_10_attempts")||"[]")}catch{return[]}}
+function drawHistory(){
+ const h=historyData();$("history").innerHTML=h.length?h.map((x,n)=>`<div class="history-item"><div><b>Попытка ${h.length-n}</b><br><span class="muted">${x.date}, ${x.clock}</span></div><div><b>${x.correct}/${x.total}</b><br><span class="muted">${x.percent}%</span></div><div><b>${fmt(x.seconds)}</b><br><span class="muted">время</span></div></div>`).join(""):`<div class="muted">Пока нет сохранённых попыток.</div>`;
+}
+function finish(){
+ clearInterval(timer);const seconds=Math.floor((Date.now()-started)/1000);let correct=0,wrong=[];
+ Q.forEach((q,n)=>equal(answers[n]||"",q[2])?correct++:wrong.push(n+1));
+ const now=new Date(),item={date:now.toLocaleDateString("ru-RU"),clock:now.toLocaleTimeString("ru-RU",{hour:"2-digit",minute:"2-digit"}),correct,total:Q.length,percent:Math.round(correct/Q.length*100),seconds,wrong};
+ const h=historyData();h.unshift(item);localStorage.setItem("oge_6_10_attempts",JSON.stringify(h.slice(0,50)));
+ $("quiz").classList.add("hidden");$("top").classList.add("hidden");$("result").classList.remove("hidden");
+ $("score").textContent=`${correct} / ${Q.length}`;$("correct").textContent=correct;$("percent").textContent=`${item.percent}%`;$("duration").textContent=fmt(seconds);
+ $("wrong").innerHTML=wrong.length?`<b>Неверные задания:</b> ${wrong.join(", ")}.`:`<b>Все задания выполнены верно!</b> 🎉`;
+ drawHistory();
+}
+function start(){
+ i=0;answers=[];clearInterval(timer);$("start").classList.add("hidden");$("result").classList.add("hidden");$("quiz").classList.remove("hidden");$("top").classList.remove("hidden");
+ started=Date.now();$("timer").textContent="00:00";timer=setInterval(()=>$("timer").textContent=fmt(Math.floor((Date.now()-started)/1000)),1000);showQuestion();
+}
+$("startBtn").onclick=start;$("restartBtn").onclick=start;$("saveBtn").onclick=saveAnswer;
+$("answer").addEventListener("keydown",e=>{if(e.key==="Enter")saveAnswer()});
+
+</script>
+</body>
+</html>
