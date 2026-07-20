@@ -16,7 +16,14 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0}.stat{padding:16px;border-radius:18px;font-weight:850;background:#fff3f5;border:1px solid #ffd6df;text-align:left}
 .test-list{margin:24px 0;padding:0;list-style:none;display:grid;gap:12px}
 .test-list li{position:relative;padding-left:32px;font-size:17px;line-height:1.45}
-.test-list li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:1000;font-size:20px}.stat b{display:block;font-size:26px;margin-top:6px}
+.test-list li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:1000;font-size:20px}
+.start-history{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.start-history h2{font-size:22px;margin:0 0 14px}
+.start-history-list{display:grid;gap:10px}
+.start-attempt{display:grid;grid-template-columns:1.15fr .8fr .8fr;gap:10px;align-items:center;padding:12px 14px;border-radius:15px;background:#fff;border:1px solid var(--line);font-size:14px}
+.start-attempt strong{font-size:15px}
+.start-history-empty{padding:14px 0;color:var(--muted);font-size:15px}
+.start-history-note{margin-top:10px;color:var(--muted);font-size:13px}.stat b{display:block;font-size:26px;margin-top:6px}
 button{border:0;border-radius:16px;padding:14px 22px;font:inherit;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--pink),var(--orange));box-shadow:0 10px 22px rgba(239,127,158,.25)}button.secondary{background:#fff;color:var(--text);border:1px solid var(--line);box-shadow:none}
 .topbar{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}.counter,.timer{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-weight:900}.progress{height:10px;background:#f1e6e9;border-radius:999px;overflow:hidden;margin-bottom:18px}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--orange));transition:.25s}
 .qnum{font-size:14px;font-weight:900;color:var(--pink);text-transform:uppercase;letter-spacing:.08em}.topic{font-size:13px;color:var(--muted);font-weight:800}.prompt{font-size:clamp(20px,3.5vw,30px);line-height:1.5;margin-top:20px}.prompt p{margin:0 0 14px}.math{text-align:center;font-size:clamp(24px,4vw,38px);margin:22px 0}.options{display:grid;gap:10px;margin:18px 0;font-size:19px}.option{padding:13px 16px;border:1px solid var(--line);border-radius:14px;background:#fffafd}
@@ -28,7 +35,7 @@ button{border:0;border-radius:16px;padding:14px 22px;font:inherit;font-weight:90
 .telegram-btn svg{width:21px;height:21px;flex:0 0 auto}
 .svg-wrap{overflow:auto;margin:18px 0}svg{max-width:100%;height:auto}
 @media(max-width:640px){
-.stats,.history-item{grid-template-columns:1fr}
+.stats,.history-item,.start-attempt{grid-template-columns:1fr}
 .card{border-radius:22px;padding:24px 18px}
 .topbar>*{flex:1;text-align:center}
 .start-actions,.actions{display:grid;grid-template-columns:1fr;width:100%}
@@ -163,6 +170,28 @@ function saveAnswer(){
  if(i<Q.length-1){i++;showQuestion()}else finish();
 }
 function historyData(){try{return JSON.parse(localStorage.getItem("oge_6_10_attempts")||"[]")}catch{return[]}}
+
+function drawStartHistory(){
+  const box = $("startHistoryList");
+  if(!box) return;
+  let history = [];
+  try{
+    history = JSON.parse(localStorage.getItem("oge_6_10_attempts") || "[]");
+  }catch(e){
+    history = [];
+  }
+  if(!history.length){
+    box.innerHTML = '<div class="start-history-empty">Пока нет сохранённых попыток.</div>';
+    return;
+  }
+  box.innerHTML = history.slice(0,5).map((item) => `
+    <div class="start-attempt">
+      <div><strong>${item.date || ""}</strong>${item.time ? " · " + item.time : ""}</div>
+      <div><strong>${item.score ?? 0}/${item.total ?? 45}</strong> · ${item.percent ?? 0}%</div>
+      <div>${item.duration || "—"}</div>
+    </div>
+  `).join("");
+}
 function drawHistory(){
  const h=historyData();$("history").innerHTML=h.length?h.map((x,n)=>`<div class="history-item"><div><b>Попытка ${h.length-n}</b><br><span class="muted">${x.date}, ${x.clock}</span></div><div><b>${x.correct}/${x.total}</b><br><span class="muted">${x.percent}%</span></div><div><b>${fmt(x.seconds)}</b><br><span class="muted">время</span></div></div>`).join(""):`<div class="muted">Пока нет сохранённых попыток.</div>`;
 }
@@ -174,7 +203,7 @@ function finish(){
  $("quiz").classList.add("hidden");$("top").classList.add("hidden");$("result").classList.remove("hidden");
  $("score").textContent=`${correct} / ${Q.length}`;$("correct").textContent=correct;$("percent").textContent=`${item.percent}%`;$("duration").textContent=fmt(seconds);
  $("wrong").innerHTML=wrong.length?`<b>Неверные задания:</b> ${wrong.join(", ")}.`:`<b>Все задания выполнены верно!</b> 🎉`;
- drawHistory();
+ drawHistory();drawStartHistory();
 }
 function start(){
  i=0;answers=[];clearInterval(timer);$("start").classList.add("hidden");$("result").classList.add("hidden");$("quiz").classList.remove("hidden");$("top").classList.remove("hidden");
@@ -183,6 +212,8 @@ function start(){
 $("startBtn").onclick=start;$("restartBtn").onclick=start;$("saveBtn").onclick=saveAnswer;
 $("answer").addEventListener("keydown",e=>{if(e.key==="Enter")saveAnswer()});
 
+
+drawStartHistory();
 </script>
 </body>
 </html>
